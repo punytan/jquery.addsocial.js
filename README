@@ -1,0 +1,33 @@
+NAME
+
+    jquery.addsocial.js - add social button on your page
+
+SYNOPSIS
+
+    <head>
+        <script src="/script/jquery.min.js"></script>
+        <script src="/script/jquery.addsocial.js""></script>
+
+        <script>
+            $(function () {
+                $('div.social-box').addSocial();
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="social-box"></div>
+    </body>
+
+DESCRIPTION
+
+    Add social button on your page.
+
+ONTRIBUTORS
+
+    mono0x
+
+AUTHOR
+
+    punytan <punytan@gmail.com>
+
