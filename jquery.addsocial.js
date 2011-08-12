@@ -1,12 +1,4 @@
 (function ($) {
-
-    function generateQuery (obj) {
-        var queryArray = [];
-        for (var key in obj)
-            queryArray.push( encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]) );
-        return '?' + queryArray.join('&');
-    }
-
     $.fn.extend({
         addSocial: function (options) {
             var defaults = {
@@ -14,13 +6,13 @@
 
             var options = $.extend(defaults, options);
 
-            var twsrc = 'http://platform.twitter.com/widgets/tweet_button.html' + generateQuery({
+            var twsrc = 'http://platform.twitter.com/widgets/tweet_button.html?' + $.param({
                 count  : 'vertical',
                 url    : window.location.href,
                 text   : document.title
             });
 
-            var fbsrc = 'http://www.facebook.com/plugins/like.php' + generateQuery({
+            var fbsrc = 'http://www.facebook.com/plugins/like.php?' + $.param({
                 href   : window.location.href,
                 layout : 'box_count',
                 width  : 450,
