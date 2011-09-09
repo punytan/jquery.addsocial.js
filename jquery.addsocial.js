@@ -31,14 +31,31 @@
                 'data-lang'     : 'en'
             }).text('Tweet');
 
+            var $hatena = $('<a>').attr({
+                'href'  : "http://b.hatena.ne.jp/entry/"+window.location.href,
+                'class' : 'hatena-bookmark-button',
+                'data-hatena-bookmark-title' : 'hatena-bookmark',
+                'data-hatena-bookmark-layout' : 'vertical',
+                'title' : 'Add to hatena bookmark.'
+            }).append(
+                $('<img>').attr({
+                    'src' : 'http://b.st-hatena.com/images/entry-button/button-only.gif',
+                    'alt' : 'Add to hatena bookmark',
+                    'border': 'none'
+                })
+            );
+
+
             require(document,{
                 'facebook-jssdk'  : "https://connect.facebook.net/en_US/all.js#xfbml=1",
                 'twitter-widgets' : "http://platform.twitter.com/widgets.js",
+                'hatena-bookmark' : "http://b.st-hatena.com/js/bookmark_button.js"
             });
 
             this.append(
                 $("<div>").html($tw).css({float: 'left'}),
                 $("<div>").html($fb).css({float: 'left'}),
+                $("<div>").html($hatena).css({float: 'left'}),
                 $("<div>").css({clear: 'both'})
             );
 
