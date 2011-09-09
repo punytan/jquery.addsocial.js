@@ -25,15 +25,15 @@
             });
 
             var $tw = $('<a>').attr({
-                'href'          : 'http://twitter.com/share',
+                'href'          : "http://twitter.com/share",
                 'class'         : 'twitter-share-button',
                 'data-count'    : 'vertical',
                 'data-lang'     : 'en'
-            });
+            }).text('Tweet');
 
             require(document,{
                 'facebook-jssdk'  : "https://connect.facebook.net/en_US/all.js#xfbml=1",
-                'twitter-widgets' : "http://platform.twitter.com/widgets.js"
+                'twitter-widgets' : "http://platform.twitter.com/widgets.js",
             });
 
             this.append(
