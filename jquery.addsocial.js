@@ -1,55 +1,44 @@
 (function ($) {
     $.fn.extend({
         addSocial: function (options) {
-            var defaults = {
-            };
-
+            var defaults = {};
             var options = $.extend(defaults, options);
 
-            var twsrc = 'http://platform.twitter.com/widgets/tweet_button.html?' + $.param({
-                count  : 'vertical',
-                url    : window.location.href,
-                text   : document.title
+            var require = function(d,libs){
+                $.each(libs, function(id, src){
+                    if (d.getElementById(id)) {return;}
+                    var js = d.createElement('script');
+                    js.id       = id;
+                    js.src      = src;
+                    js.async    = true;
+                    d.getElementsByTagName('head')[0].appendChild(js);
+                });
+            }
+
+            var $fb = $('<div>').attr({
+                'class'             : 'fb-like',
+                'data-href'         : window.location.href,
+                'data-send'         : 'false',
+                'data-layout'       : 'box_count',
+                'data-show-faces'   : 'false',
+                'data-font'         : 'arial'
             });
 
-            var fbsrc = 'http://www.facebook.com/plugins/like.php?' + $.param({
-                href   : window.location.href,
-                layout : 'box_count',
-                width  : 450,
-                height : 80,
-                action : 'like',
-                font   : 'verdana',
-                show_faces  : true,
-                colorscheme : 'light'
+            var $tw = $('<a>').attr({
+                'href'          : 'http://twitter.com/share',
+                'class'         : 'twitter-share-button',
+                'data-count'    : 'vertical',
+                'data-lang'     : 'en'
             });
 
-            var tw = $("<iframe>").attr({
-                allowTransparency : true,
-                frameborder : 0,
-                scrolling   : 'no',
-                src         : twsrc
-            }).css({
-                border   : 'none',
-                overflow : 'hidden',
-                width    : '65px',
-                height   : '65px'
-            });
-
-            var fb = $('<iframe>').attr({
-                allowTransparency : true,
-                frameborder : 0,
-                scrolling   : 'no',
-                src         : fbsrc,
-            }).css({
-                border   : 'none',
-                overflow : 'hidden',
-                width    : '80px',
-                height   : '65px'
+            require(document,{
+                'facebook-jssdk'  : "https://connect.facebook.net/en_US/all.js#xfbml=1",
+                'twitter-widgets' : "http://platform.twitter.com/widgets.js"
             });
 
             this.append(
-                $("<div>").html(tw).css({float: 'left'}),
-                $("<div>").html(fb).css({float: 'left'}),
+                $("<div>").html($tw).css({float: 'left'}),
+                $("<div>").html($fb).css({float: 'left'}),
                 $("<div>").css({clear: 'both'})
             );
 
