@@ -1,63 +1,70 @@
 (function ($) {
-
-    function generateQuery (obj) {
-        var queryArray = [];
-        for (var key in obj)
-            queryArray.push( encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]) );
-        return '?' + queryArray.join('&');
-    }
-
     $.fn.extend({
         addSocial: function (options) {
-            var defaults = {
-            };
-
+            var defaults = {};
             var options = $.extend(defaults, options);
 
-            var twsrc = 'http://platform.twitter.com/widgets/tweet_button.html' + generateQuery({
-                count  : 'vertical',
-                url    : window.location.href,
-                text   : document.title
+            var require = function(d,libs){
+                $.each(libs, function(id, src){
+                    if (d.getElementById(id)) {return;}
+                    var js = d.createElement('script');
+                    js.id       = id;
+                    js.src      = src;
+                    js.async    = true;
+                    d.getElementsByTagName('head')[0].appendChild(js);
+                });
+            };
+
+            var $fb = $('<div>').attr({
+                'class'             : 'fb-like',
+                'data-href'         : window.location.href,
+                'data-send'         : 'false',
+                'data-layout'       : 'button_count',
+                'data-show-faces'   : 'false',
+                'data-font'         : 'arial'
             });
 
-            var fbsrc = 'http://www.facebook.com/plugins/like.php' + generateQuery({
-                href   : window.location.href,
-                layout : 'box_count',
-                width  : 450,
-                height : 80,
-                action : 'like',
-                font   : 'verdana',
-                show_faces  : true,
-                colorscheme : 'light'
+            var $tw = $('<a>').attr({
+                'href'          : "http://twitter.com/share",
+                'class'         : 'twitter-share-button',
+                'data-count'    : 'horizontal',
+                'data-lang'     : 'en'
+            }).text('Tweet');
+
+            var $hatena = $('<a>').attr({
+                'href'  : "http://b.hatena.ne.jp/entry/"+window.location.href,
+                'class' : 'hatena-bookmark-button',
+                'data-hatena-bookmark-title' : 'hatena-bookmark',
+                'data-hatena-bookmark-layout' : 'standard',
+                'title' : 'Add to hatena bookmark.'
+            }).append(
+                $('<img>').attr({
+                    'src' : 'http://b.st-hatena.com/images/entry-button/button-only.gif',
+                    'alt' : 'Add to hatena bookmark',
+                    'border': 'none'
+                })
+            );
+
+            var $google = $('<div>').attr({
+                'class' : 'g-plusone',
+                'data-size' : 'medium',
+                'data-annotation' : 'bubble',
+                'data-href' : window.location.href
             });
 
-            var tw = $("<iframe>").attr({
-                allowTransparency : true,
-                frameborder : 0,
-                scrolling   : 'no',
-                src         : twsrc
-            }).css({
-                border   : 'none',
-                overflow : 'hidden',
-                width    : '65px',
-                height   : '65px'
-            });
 
-            var fb = $('<iframe>').attr({
-                allowTransparency : true,
-                frameborder : 0,
-                scrolling   : 'no',
-                src         : fbsrc,
-            }).css({
-                border   : 'none',
-                overflow : 'hidden',
-                width    : '80px',
-                height   : '65px'
+            require(document,{
+                'facebook-jssdk'  : "https://connect.facebook.net/en_US/all.js#xfbml=1",
+                'twitter-widgets' : "http://platform.twitter.com/widgets.js",
+                'google-plusone'  : "https://apis.google.com/js/plusone.js",
+                'hatena-bookmark' : "http://b.st-hatena.com/js/bookmark_button.js"
             });
 
             this.append(
-                $("<div>").html(tw).css({float: 'left'}),
-                $("<div>").html(fb).css({float: 'left'}),
+                $("<div>").html($tw).css({float: 'left'}),
+                $("<div>").html($fb).css({float: 'left'}),
+                $("<div>").html($google).css({float: 'left'}),
+                $("<div>").html($hatena).css({float: 'left'}),
                 $("<div>").css({clear: 'both'})
             );
 
