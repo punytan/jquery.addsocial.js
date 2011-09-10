@@ -19,7 +19,7 @@
                 'class'             : 'fb-like',
                 'data-href'         : window.location.href,
                 'data-send'         : 'false',
-                'data-layout'       : 'box_count',
+                'data-layout'       : 'button_count',
                 'data-show-faces'   : 'false',
                 'data-font'         : 'arial'
             });
@@ -27,7 +27,7 @@
             var $tw = $('<a>').attr({
                 'href'          : "http://twitter.com/share",
                 'class'         : 'twitter-share-button',
-                'data-count'    : 'vertical',
+                'data-count'    : 'horizontal',
                 'data-lang'     : 'en'
             }).text('Tweet');
 
@@ -35,7 +35,7 @@
                 'href'  : "http://b.hatena.ne.jp/entry/"+window.location.href,
                 'class' : 'hatena-bookmark-button',
                 'data-hatena-bookmark-title' : 'hatena-bookmark',
-                'data-hatena-bookmark-layout' : 'vertical',
+                'data-hatena-bookmark-layout' : 'standard',
                 'title' : 'Add to hatena bookmark.'
             }).append(
                 $('<img>').attr({
