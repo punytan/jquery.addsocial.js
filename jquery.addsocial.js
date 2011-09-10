@@ -45,16 +45,25 @@
                 })
             );
 
+            var $google = $('<div>').attr({
+                'class' : 'g-plusone',
+                'data-size' : 'medium',
+                'data-annotation' : 'bubble',
+                'data-href' : window.location.href
+            });
+
 
             require(document,{
                 'facebook-jssdk'  : "https://connect.facebook.net/en_US/all.js#xfbml=1",
                 'twitter-widgets' : "http://platform.twitter.com/widgets.js",
+                'google-plusone'  : "https://apis.google.com/js/plusone.js",
                 'hatena-bookmark' : "http://b.st-hatena.com/js/bookmark_button.js"
             });
 
             this.append(
                 $("<div>").html($tw).css({float: 'left'}),
                 $("<div>").html($fb).css({float: 'left'}),
+                $("<div>").html($google).css({float: 'left'}),
                 $("<div>").html($hatena).css({float: 'left'}),
                 $("<div>").css({clear: 'both'})
             );
