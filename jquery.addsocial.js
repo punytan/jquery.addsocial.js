@@ -13,7 +13,7 @@
                     js.async    = true;
                     d.getElementsByTagName('head')[0].appendChild(js);
                 });
-            }
+            };
 
             var $fb = $('<div>').attr({
                 'class'             : 'fb-like',
