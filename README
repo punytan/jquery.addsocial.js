@@ -4,7 +4,7 @@ NAME
 
 DEMO
 
-    http://linknode.net/addsocial
+    See demo.html or http://linknode.net/addsocial
 
 SYNOPSIS
 
@@ -29,9 +29,13 @@ DESCRIPTION
 
 CONTRIBUTORS
 
-    mono0x
+    https://github.com/punytan/jquery.addsocial.js/contributors
 
 AUTHOR
 
     punytan <punytan@gmail.com>
 
+REFERENCES
+
+    https://twitter.com/about/resources/tweetbutton
+    http://www.facebook.com/plugins/like.php
