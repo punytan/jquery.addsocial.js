@@ -47,7 +47,7 @@
                 allowTransparency : true,
                 frameborder : 0,
                 scrolling   : 'no',
-                src         : fbsrc,
+                src         : fbsrc
             }).css({
                 border   : 'none',
                 overflow : 'hidden',
@@ -56,13 +56,13 @@
             });
 
             this.append(
-                $("<div>").html(tw).css({float: 'left'}),
-                $("<div>").html(fb).css({float: 'left'}),
+                $("<div>").html(tw).css({'float': 'left'}),
+                $("<div>").html(fb).css({'float': 'left'}),
                 $("<div>").css({clear: 'both'})
             );
 
             return this;
-        },
+        }
     });
 })(jQuery);
 
