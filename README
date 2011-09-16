@@ -10,7 +10,7 @@ SYNOPSIS
 
     <head>
         <script src="/script/jquery.min.js"></script>
-        <script src="/script/jquery.addsocial.js""></script>
+        <script src="/script/jquery.addsocial.js"></script>
 
         <script>
             $(function () {
